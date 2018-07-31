@@ -24,12 +24,14 @@ RUN apt-get -y update  && apt-get install -y \
   postgresql-client \
 && rm -rf /var/lib/apt/lists/*
 
-RUN pip --proxy ${http_proxy} install \
-	 --upgrade setuptools\
-   msgpack\
-   pystan
+RUN pip install pip --upgrade
 
-RUN pip --proxy ${http_proxy}  install \
+RUN pip install \
+  setuptools\
+  msgpack\
+  pystan --upgrade
+
+RUN pip install \
 	 cython\
 	 numpy\
 	 matplotlib\
@@ -38,8 +40,10 @@ RUN pip --proxy ${http_proxy}  install \
 	 psycopg2\
 	 sqlalchemy
 
- RUN pip --proxy ${http_proxy}  install \
+ RUN pip  install \
  jupyter
+
+ RUN pip install git+https://github.com/pydata/pandas-datareader.git
 
 
 CMD /bin/bash -c "jupyter notebook --allow-root --ip='*' --no-browser --NotebookApp.token=''"
