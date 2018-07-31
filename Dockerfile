@@ -1,7 +1,7 @@
 FROM python:3.4.6-wheezy
 #FROM continuumio/anaconda3
 
-MAINTAINER Nonato de Paula, Fabio (BHGE) <fabio.nonato@ge.com>
+MAINTAINER Fabio Nonato
 
 ARG http_proxy
 ARG https_proxy
